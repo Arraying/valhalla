@@ -239,7 +239,7 @@ objArrayOop ObjArrayKlass::allocate_instance(int length, ArrayProperties props, 
       size = flatArrayOopDesc::object_size(ak->layout_helper(), length);
       // Bandaid for JDK-8233189
       if ((size * length) > (16 * G)) {
-        THROW_MSG_NULL(vmSymbols::java_lang_IllegalArgumentException(), "cannot allocate flat arrays larger than 16 GB");
+        THROW_MSG_NULL(vmSymbols::java_lang_InternalError(), "cannot allocate flat arrays larger than 16 GB");
       }
       break;
     default:
