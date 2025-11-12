@@ -133,11 +133,19 @@ void FlatArrayKlass::metaspace_pointers_do(MetaspaceClosure* it) {
   ObjArrayKlass::metaspace_pointers_do(it);
 }
 
-// Oops allocation...
+bool FlatArrayKlass::is_within_size_limits(size_t obj_size, int length) {
+  assert(obj_size > 0 && length >= 0, "must be");
+  size_t space = (size_t) length * obj_size;
+  return space <= MaxFlatArrayBytes;
+}
+
 objArrayOop FlatArrayKlass::allocate_instance(int length, ArrayProperties props, TRAPS) {
   assert(UseArrayFlattening, "Must be enabled");
   check_array_allocation_length(length, max_elements(), CHECK_NULL);
   int size = flatArrayOopDesc::object_size(layout_helper(), length);
+  if (!is_within_size_limits(size, length)) {
+    THROW_MSG_NULL(vmSymbols::java_lang_InternalError(), "array too large for force flattening");
+  }
   flatArrayOop array = (flatArrayOop) Universe::heap()->array_allocate(this, size, length, true, CHECK_NULL);
   return array;
 }

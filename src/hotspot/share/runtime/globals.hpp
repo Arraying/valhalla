@@ -843,6 +843,10 @@ const int ObjectAlignmentInBytes = 8;
   develop(ccstrlist, PrintInlineKlassFields, "",                            \
           "Print fields collected by InlineKlass::collect_fields")          \
                                                                             \
+  develop(uintx, MaxFlatArrayBytes, 16 * G,                                  \
+          "Max nof bytes flat arrays can have, reference arrays are used if exceeded") \
+          range(0, 16 * G)                                                  \
+                                                                            \
   /* Need to limit the extent of the padding to reasonable size.          */\
   /* 8K is well beyond the reasonable HW cache line size, even with       */\
   /* aggressive prefetching, while still leaving the room for segregating */\

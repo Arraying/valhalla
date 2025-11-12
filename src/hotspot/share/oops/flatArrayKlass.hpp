@@ -65,6 +65,8 @@ class FlatArrayKlass : public ObjArrayKlass {
     return (FlatArrayKlass*) k;
   }
 
+  static bool is_within_size_limits(size_t obj_size, int length);
+
   // klass allocation
   static FlatArrayKlass* allocate_klass(Klass* element_klass, ArrayProperties props, LayoutKind lk, TRAPS);
 

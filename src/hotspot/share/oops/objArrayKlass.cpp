@@ -173,9 +173,9 @@ size_t ObjArrayKlass::oop_size(oop obj) const {
 }
 
 ArrayDescription ObjArrayKlass::array_layout_selection(Klass* element, ArrayProperties properties) {
-  // TODO FIXME: the layout selection should take the array size in consideration
-  // to avoid creation of arrays too big to be handled by the VM. See JDK-8233189
-  if (!UseArrayFlattening || element->is_array_klass() || element->is_identity_class() || element->is_abstract()) {
+  if (!UseArrayFlattening
+      || element->is_array_klass() || element->is_identity_class() || element->is_abstract()
+      || properties == ArrayProperties::FORCE_REFERENCE) {
     return ArrayDescription(RefArrayKlassKind, properties, LayoutKind::REFERENCE);
   }
   assert(element->is_final(), "Flat layouts below require monomorphic elements");
@@ -237,9 +237,10 @@ objArrayOop ObjArrayKlass::allocate_instance(int length, ArrayProperties props, 
       break;
     case Klass::FlatArrayKlassKind:
       size = flatArrayOopDesc::object_size(ak->layout_helper(), length);
-      // Bandaid for JDK-8233189
-      if ((size * length) > (16 * G)) {
-        THROW_MSG_NULL(vmSymbols::java_lang_InternalError(), "cannot allocate flat arrays larger than 16 GB");
+      if (!FlatArrayKlass::is_within_size_limits(size, length)) {
+        // Although we have a candidate for flattening, we can't fit it within our size limitation.
+        // Force the reference array layout and try again.
+        return ObjArrayKlass::allocate_instance(length, ArrayProperties::FORCE_REFERENCE, THREAD);
       }
       break;
     default:

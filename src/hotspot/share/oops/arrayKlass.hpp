@@ -43,8 +43,8 @@ class ArrayKlass: public Klass {
     NON_ATOMIC      = 1 << 1,
     // FINAL           = 1 << 2,
     // VOLATILE        = 1 << 3
-    INVALID         = 1 << 4,
-    DUMMY           = 1 << 5      // Just to transition the code, to be removed ASAP
+    FORCE_REFERENCE = 1 << 4,      // Do not check flat arrays against this, used as fallback for large arrays.
+    INVALID         = 1 << 5,
   };
 
   static bool is_null_restricted(ArrayProperties props) { return (props & NULL_RESTRICTED) != 0; }
