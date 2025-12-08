@@ -32,7 +32,6 @@ import java.util.List;
  * A task to configure and run the Java launcher.
  */
 public class JavaTask extends AbstractTask<JavaTask> {
-    boolean includeStandardOptions = true;
     private String classpath;
     private List<String> vmOptions;
     private String className;
@@ -103,20 +102,6 @@ public class JavaTask extends AbstractTask<JavaTask> {
      */
     public JavaTask classArgs(List<String> classArgs) {
         this.classArgs = classArgs;
-        return this;
-    }
-
-    /**
-     * Sets whether or not the standard VM and java options for the test should be passed
-     * to the new VM instance. If this method is not called, the default behavior is that
-     * the options will be passed to the new VM instance.
-     *
-     * @param includeStandardOptions whether or not the standard VM and java options for
-     *                               the test should be passed to the new VM instance.
-     * @return this task object
-     */
-    public JavaTask includeStandardOptions(boolean includeStandardOptions) {
-        this.includeStandardOptions = includeStandardOptions;
         return this;
     }
 

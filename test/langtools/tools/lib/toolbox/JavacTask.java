@@ -51,7 +51,6 @@ import com.sun.tools.javac.api.JavacTool;
  * A task to configure and run the Java compiler, javac.
  */
 public class JavacTask extends AbstractTask<JavacTask> {
-    private boolean includeStandardOptions;
     private List<Path> classpath;
     private List<Path> sourcepath;
     private Path outdir;

@@ -48,6 +48,7 @@ import static toolbox.ToolBox.lineSeparator;
 abstract class AbstractTask<T extends AbstractTask<T>> implements Task {
     protected final ToolBox toolBox;
     protected final Mode mode;
+    protected boolean includeStandardOptions = true;
     private final Map<OutputKind, String> redirects = new EnumMap<>(OutputKind.class);
     private final Map<String, String> envVars = new HashMap<>();
     private Expect expect = Expect.SUCCESS;
@@ -197,6 +198,20 @@ abstract class AbstractTask<T extends AbstractTask<T>> implements Task {
         if (mode != Mode.EXEC)
             throw new IllegalStateException();
         redirects.put(outputKind, path);
+        return (T) this;
+    }
+
+    /**
+     * Sets whether or not the standard VM and java(c) options for the test should be passed
+     * to the new task. If this method is not called, the default behavior is that
+     * the options will be passed to the task instance
+     *
+     * @param includeStandardOptions whether or not the standard VM and java(c) options for
+     *                               the test should be passed to the new VM instance.
+     * @return this task object
+     */
+    public T includeStandardOptions(boolean includeStandardOptions) {
+        this.includeStandardOptions = includeStandardOptions;
         return (T) this;
     }
 
