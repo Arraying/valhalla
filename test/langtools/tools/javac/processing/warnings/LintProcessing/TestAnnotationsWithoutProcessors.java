@@ -25,6 +25,7 @@
  * @test
  * @bug 8193214
  * @summary Verify annotations without processors warning not given for base module annotations.
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules java.compiler
  * @build JavacTestingAbstractProcessor TestAnnotationsWithoutProcessors

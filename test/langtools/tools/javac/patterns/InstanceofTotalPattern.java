@@ -1,6 +1,7 @@
 /*
  * @test /nodynamiccopyright/
  * @summary Verify behavior of total patterns in instanceof
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=InstanceofTotalPattern-15.out --release 15 -XDrawDiagnostics InstanceofTotalPattern.java
  * @compile/fail/ref=InstanceofTotalPattern-16.out --release 16 -XDrawDiagnostics InstanceofTotalPattern.java
  * @compile/fail/ref=InstanceofTotalPattern-20.out --release 20 -XDrawDiagnostics InstanceofTotalPattern.java

@@ -25,6 +25,7 @@
  * @test
  * @bug 8244146
  * @summary Test test and class file retention of strictfp.
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 16 TestStrictfpRetention.java StrictfpInSource.java
  * @compile         -processor   TestStrictfpRetention --release 16                       StrictfpHost.java
  * @compile/process -processor   TestStrictfpRetention --release 16  -proc:only           StrictfpHost

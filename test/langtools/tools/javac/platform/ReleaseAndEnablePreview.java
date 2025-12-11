@@ -26,6 +26,7 @@
  * @bug 8318913
  * @summary Ensure release and enable-preview work well together.
  * @modules jdk.compiler
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release ${jdk.version} --enable-preview ReleaseAndEnablePreview.java
  */
 

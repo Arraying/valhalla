@@ -50,4 +50,6 @@ requires.extraPropDefns.vmOpts = \
 requires.properties= \
     vm.continuations \
     vm.debug \
-    java.enablePreview
+    java.enablePreview \
+    javac.sourceless \
+    javac.releaseless \

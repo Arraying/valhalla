@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8222035
  * @summary minimal inference context optimization is forcing resolution with incomplete constraints
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=MinContextOpTest_A.out -XDrawDiagnostics -source 15 MinContextOpTest.java
  * @compile/fail/ref=MinContextOpTest_B.out -XDrawDiagnostics MinContextOpTest.java
  */

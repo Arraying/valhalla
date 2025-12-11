@@ -25,6 +25,7 @@
  * @test
  * @bug 8075520
  * @summary Varargs access check mishandles capture variables
+ * @requires javac.sourceless & javac.releaseless
  * @compile             VarargsAndWildcardParameterizedTypeTest3.java
  * @compile --release 8 VarargsAndWildcardParameterizedTypeTest3.java
  */

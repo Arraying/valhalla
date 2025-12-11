@@ -3,6 +3,7 @@
  * @bug    8007401 8007427 8061549
  * @author sogoel
  * @summary Test generation of warnings when '_' is used an identifier
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=IdentifierTest8.out --release 8 -Werror -XDrawDiagnostics -Xlint:-options IdentifierTest.java
  * @compile/fail/ref=IdentifierTest9.out --release 9 -XDrawDiagnostics IdentifierTest.java
  * @compile/fail/ref=IdentifierTest22.out -XDrawDiagnostics IdentifierTest.java

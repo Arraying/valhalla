@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8206986
  * @summary Verify "case null" is not allowed for --release 16, 20
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=SwitchNullDisabled.out -XDrawDiagnostics --release 20 SwitchNullDisabled.java
  * @compile SwitchNullDisabled.java
  */

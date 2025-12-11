@@ -27,6 +27,7 @@
  * @summary Checking ACC_SYNTHETIC flag is generated for bridge method
  *          generated for lambda expressions and method references when
  *          compiling with --release 14.
+ * @requires javac.sourceless & javac.releaseless
  * @modules jdk.compiler/com.sun.tools.javac.api
  *          jdk.compiler/com.sun.tools.javac.main
  * @library /tools/lib /tools/javac/lib ../lib

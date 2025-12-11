@@ -25,6 +25,7 @@
  * @test
  * @bug 6402506 8028545 8028543
  * @summary Test that getSourceVersion works properly
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules java.compiler
  *          jdk.compiler

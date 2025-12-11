@@ -24,6 +24,7 @@
 /*
  * @test
  * @bug 8071961
+ * @requires javac.sourceless & javac.releaseless
  * @compile -Xlint:missing-explicit-ctor,-options -Werror --release 8 NoWarningCases.java
  * @compile -Xlint:missing-explicit-ctor          -Werror             NoWarningCases.java
  */

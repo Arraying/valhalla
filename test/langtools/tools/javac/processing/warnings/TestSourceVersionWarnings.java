@@ -26,6 +26,7 @@
  * @test
  * @bug 6376083 6376084 6458819 7025784 7025786 7025789
  * @summary Test that warnings about source versions are output as expected.
+ * @requires javac.sourceless & javac.releaseless
  * @modules java.compiler
  *          jdk.compiler
  * @compile TestSourceVersionWarnings.java

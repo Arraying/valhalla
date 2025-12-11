@@ -132,6 +132,8 @@ public class VMProps implements Callable<Map<String, String>> {
         // jdk.hasLibgraal is true if the libgraal shared library file is present
         map.put("jdk.hasLibgraal", this::hasLibgraal);
         map.put("java.enablePreview", this::isPreviewEnabled);
+        map.put("javac.sourceless", this::isSourceless);
+        map.put("javac.releaseless", this::isReleaseless);
         map.put("vm.libgraal.jit", this::isLibgraalJIT);
         map.put("vm.compiler1.enabled", this::isCompiler1Enabled);
         map.put("vm.compiler2.enabled", this::isCompiler2Enabled);
@@ -835,8 +837,28 @@ public class VMProps implements Callable<Map<String, String>> {
         return "" + result;
     }
 
+    /**
+     * Checks that javac was invoked without --source
+     * @return true if --source was not given to javac
+     */
+    private String isSourceless() {
+        return "" + compilerFlags().noneMatch(s -> "--source".equals(s) || "-source".equals(s));
+    }
+
+    /**
+     * Checks that javac was invoked without --release
+     * @return true if --release was not given to javac
+     */
+    private String isReleaseless() {
+        return "" + compilerFlags().noneMatch(s -> "--release".equals(s) || "-release".equals(s));
+    }
+
     private Stream<String> allFlags() {
         return Stream.of((System.getProperty("test.vm.opts", "") + " " + System.getProperty("test.java.opts", "")).trim().split("\\s+"));
+    }
+
+    private Stream<String> compilerFlags() {
+        return Stream.of(System.getProperty("test.compiler.opts", "").trim().split("\\s+"));
     }
 
     /*

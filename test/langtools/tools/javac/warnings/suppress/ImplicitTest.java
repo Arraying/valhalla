@@ -26,6 +26,7 @@
  * @bug 8021112
  * @summary Verify that deprecated warning is printed correctly for import
  *          statement when processing a file on demand while attributing another file.
+ * @requires javac.sourceless & javac.releaseless
  * @clean pack.ImplicitUse pack.ImplicitMain pack.Dep
  * @compile/ref=ImplicitTest.out --release 8 -XDrawDiagnostics -Xlint:deprecation,-options pack/ImplicitMain.java
  */

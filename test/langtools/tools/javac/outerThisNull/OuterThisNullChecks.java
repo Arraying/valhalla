@@ -37,6 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @bug 8164714
  * @summary Null check for immediate enclosing instance for VM/reflective
  *          invocation of inner classes
+ * @requires javac.sourceless & javac.releaseless
  *
  * @clean *
  * @compile OuterThisNullChecks.java

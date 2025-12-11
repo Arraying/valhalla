@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8027682
  * @summary Verify proper error reporting of extra semicolon before import statement
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=ExtraImportSemicolon.out1 -XDrawDiagnostics ExtraImportSemicolon.java
  * @compile/ref=ExtraImportSemicolon.out2 --release 20 -XDrawDiagnostics ExtraImportSemicolon.java
  */

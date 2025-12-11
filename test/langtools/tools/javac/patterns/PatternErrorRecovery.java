@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8268320 8312984
  * @summary Verify user-friendly errors are reported for ill-formed pattern.
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=PatternErrorRecovery.out -XDrawDiagnostics -XDshould-stop.at=FLOW -XDdev PatternErrorRecovery.java
  * @compile/fail/ref=PatternErrorRecovery-old.out --release 20 -XDrawDiagnostics -XDshould-stop.at=FLOW PatternErrorRecovery.java
  */

@@ -25,6 +25,7 @@
  * @test
  * @bug 8266670
  * @summary Test expected value of STRICT AccessFlag
+ * @requires javac.sourceless & javac.releaseless
  * @compile -source 16 -target 16 StrictAccessFlagTest.java
  * @run main StrictAccessFlagTest
  */

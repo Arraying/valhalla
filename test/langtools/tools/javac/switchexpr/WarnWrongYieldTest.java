@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8223305 8226522
  * @summary Verify correct warnings w.r.t. yield
+ * @requires javac.sourceless & javac.releaseless
  * @compile/ref=WarnWrongYieldTest.out --release 13 -XDrawDiagnostics -XDshould-stop.ifError=ATTR -XDshould-stop.ifNoError=ATTR WarnWrongYieldTest.java
  */
 

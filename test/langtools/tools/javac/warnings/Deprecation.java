@@ -1,6 +1,7 @@
 /*
  * @test  /nodynamiccopyright/
  * @bug 4986256 6598104 8032211 8194764
+ * @requires javac.sourceless & javac.releaseless
  * @compile/ref=Deprecation.noLint.out                                                   -XDrawDiagnostics Deprecation.java
  * @compile/ref=Deprecation.lintDeprecation.out  -Xlint:deprecation                      -XDrawDiagnostics Deprecation.java
  * @compile/ref=Deprecation.lintDeprecation.out  -Xlint:deprecation,-options --release 9 -XDrawDiagnostics Deprecation.java

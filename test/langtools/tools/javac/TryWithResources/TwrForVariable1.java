@@ -1,6 +1,7 @@
 /* @test /nodynamiccopyright/
  * @bug 7196163
  * @summary Verify that variables can be used as operands to try-with-resources
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=TwrForVariable1.out --release 8 -XDrawDiagnostics -Xlint:-options TwrForVariable1.java
  * @compile TwrForVariable1.java
  * @run main TwrForVariable1

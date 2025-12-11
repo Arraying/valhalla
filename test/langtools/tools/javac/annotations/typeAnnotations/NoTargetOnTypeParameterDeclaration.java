@@ -25,6 +25,7 @@
  * @test
  * @bug 8303784
  * @summary no-@Target annotations should be applicable to type parameter declarations
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=NoTargetOnTypeParameterDeclaration.out --release 13 -XDrawDiagnostics NoTargetOnTypeParameterDeclaration.java
  * @compile --release 14 NoTargetOnTypeParameterDeclaration.java
  * @compile NoTargetOnTypeParameterDeclaration.java

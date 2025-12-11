@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8077786
  * @summary Check varargs access against inferred signature
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=VarargsInferredPrivateType.out -nowarn -XDrawDiagnostics VarargsInferredPrivateType.java OtherPackage.java
  * @compile/fail/ref=VarargsInferredPrivateType.out --release 8 -nowarn -XDrawDiagnostics VarargsInferredPrivateType.java OtherPackage.java
  *

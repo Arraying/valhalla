@@ -25,6 +25,7 @@
  * @test
  * @bug 8049075
  * @summary javac, wildcards and generic vararg method invocation not accepted
+ * @requires javac.sourceless & javac.releaseless
  * @compile VarargsAndWildcardParameterizedTypeTest.java
  * @compile --release 8 VarargsAndWildcardParameterizedTypeTest.java
  */

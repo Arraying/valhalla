@@ -23,6 +23,7 @@
 
 /*
  * @test
+ * @requires javac.sourceless & javac.releaseless
  * @library /test/lib .. ./cases/modules
  * @build JNativeScanTestBase
  * @compile --release 20 cases/classpath/missingsystem/App.java

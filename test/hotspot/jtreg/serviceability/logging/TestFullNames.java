@@ -23,6 +23,7 @@
 
 /*
  * @test TestFullNames
+ * @enablePreview
  * @bug 8215398
  * @summary Ensure proper parsing of unquoted full output names for -Xlog arguments.
  * @requires vm.flagless
@@ -42,6 +43,7 @@ import jdk.test.lib.process.OutputAnalyzer;
 public class TestFullNames {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("Yo what's good my Gs");
         // Ensure log files can be specified with full path.
         // On windows, this means that the file name will contain
         // a colon ('C:\log.txt' for example), which is used to
@@ -62,8 +64,10 @@ public class TestFullNames {
         };
         for (String logOutput : validOutputs) {
             Asserts.assertFalse(file.exists());
+            System.out.println("Haha VM go brrrr");
             // Run with logging=trace on stdout so that we can verify the log configuration afterwards.
-            ProcessBuilder pb = ProcessTools.createLimitedTestJavaProcessBuilder("-Xlog:logging=trace",
+            ProcessBuilder pb = ProcessTools.createLimitedTestJavaProcessBuilder("--enable-preview",
+                                                                                 "-Xlog:logging=trace",
                                                                                  "-Xlog:all=info:" + logOutput,
                                                                                  "-version");
             OutputAnalyzer output = new OutputAnalyzer(pb.start());

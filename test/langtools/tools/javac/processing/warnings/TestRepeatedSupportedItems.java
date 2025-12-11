@@ -25,6 +25,7 @@
  * @test
  * @bug 8146726
  * @summary Test that warnings about repeated supported options and annotation types output as expected.
+ * @requires javac.sourceless & javac.releaseless
  * @compile TestRepeatedSupportedItems.java
  * @compile/ref=au_8.out       -XDrawDiagnostics -processor TestRepeatedSupportedItems -proc:only  -source 8 -Xlint:-options TestRepeatedSupportedItems.java
  * @compile/ref=au_current.out -XDrawDiagnostics -processor TestRepeatedSupportedItems -proc:only            -Xlint:-options TestRepeatedSupportedItems.java

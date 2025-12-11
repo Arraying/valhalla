@@ -1,5 +1,6 @@
 /**
  * @test
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=SimpleDeconstructionPatternOld.out --release 20 -XDrawDiagnostics SimpleDeconstructionPattern.java
  * @compile SimpleDeconstructionPattern.java
  * @run main SimpleDeconstructionPattern

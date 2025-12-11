@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8231827
  * @summary Verify behavior w.r.t. non-reifiable types in instanceof
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=ReifiableOld-old.out --release 15 -XDrawDiagnostics ReifiableOld.java
  * @compile/fail/ref=ReifiableOld.out -XDrawDiagnostics ReifiableOld.java
  */

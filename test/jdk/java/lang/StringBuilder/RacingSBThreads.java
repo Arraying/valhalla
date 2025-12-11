@@ -24,6 +24,7 @@
 /*
  * @test
  * @summary Test multi-threaded use of StringBuilder
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 8 RacingSBThreads.java
  * @run main/othervm -esa RacingSBThreads read
  * @run main/othervm -esa RacingSBThreads insert

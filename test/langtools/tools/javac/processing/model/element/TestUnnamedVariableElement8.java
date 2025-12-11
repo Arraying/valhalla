@@ -25,6 +25,7 @@
  * @test
  * @bug 8302344 8307007
  * @summary Compiler Implementation for Unnamed patterns and variables
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules jdk.compiler
  * @build   JavacTestingAbstractProcessor

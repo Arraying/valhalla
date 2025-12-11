@@ -25,6 +25,7 @@
  * @test
  * @bug 6900037
  * @summary javac should warn if earlier -source is used and bootclasspath not set
+ * @requires javac.sourceless & javac.releaseless
  * @compile T6900037.java
  * @compile -source 1.8 T6900037.java
  * @compile/fail/ref=T6900037.out -XDrawDiagnostics -Werror -source 1.8 T6900037.java

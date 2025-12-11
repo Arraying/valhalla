@@ -88,6 +88,8 @@ requires.properties= \
     sun.arch.data.model \
     java.runtime.name \
     java.enablePreview \
+    javac.sourceless \
+    javac.releaseless \
     vm.flagless \
     vm.gc.G1 \
     vm.gc.Serial \

@@ -27,6 +27,7 @@
  * @summary Verify no error is when compiling a class whose supertype is not exported.
  * @modules jdk.compiler
  *          jdk.jfr
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 17 NonExportedSuperTypes.java
  * @compile --release ${jdk.version} NonExportedSuperTypes.java
  */

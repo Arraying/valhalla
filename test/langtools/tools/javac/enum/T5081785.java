@@ -3,6 +3,7 @@
  * @bug 5081785
  * @summary enums should be allowed in non-static contexts
  * @author Peter von der Ahé
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=T5081785.out -XDrawDiagnostics --release 15 T5081785.java
  * @compile T5081785.java
  */

@@ -28,6 +28,7 @@
  * @test
  * @bug 5047307
  * @summary javac -nowarn improperly suppresses JLS-mandated warnings
+ * @requires javac.sourceless & javac.releaseless
  * @compile/ref=Test1.out -XDrawDiagnostics A.java
  * @compile/ref=Test1.out -XDrawDiagnostics -nowarn A.java
  * @compile/ref=Test1.out -XDrawDiagnostics -Xmaxwarns 1 A.java

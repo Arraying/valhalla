@@ -25,6 +25,7 @@
  * @test
  * @bug 8173945
  * @summary Test Elements.getAll{Type, Package, Module}Elements
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules java.compiler
  *          jdk.compiler

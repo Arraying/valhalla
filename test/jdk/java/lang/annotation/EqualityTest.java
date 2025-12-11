@@ -25,6 +25,7 @@
  * @test
  * @bug 8071859 8169629
  * @summary Check annotation equality behavior against the invocation handler
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 8 EqualityTest.java
  * @run main EqualityTest
  * @compile EqualityTest.java

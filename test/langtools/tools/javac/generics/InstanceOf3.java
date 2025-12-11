@@ -4,6 +4,7 @@
  * @summary the type in an instanceof expression must be reifiable
  * @author seligman
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=InstanceOf3.out -XDrawDiagnostics --release 15 InstanceOf3.java
  */
 

@@ -4,6 +4,7 @@
  * @summary New rules for when deprecation messages are suppressed
  * @author gafter
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile/ref=SuppressDeprecation.out -Xlint:deprecation -XDrawDiagnostics SuppressDeprecation.java
  * @compile/ref=SuppressDeprecation8.out --release 8 -Xlint:deprecation,-options -XDrawDiagnostics SuppressDeprecation.java
  */

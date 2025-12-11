@@ -25,6 +25,7 @@
  * @test
  * @bug 6449798 6399404 8173776 8163989
  * @summary Test basic workings of PackageElement
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules java.compiler
  *          jdk.compiler

@@ -26,6 +26,7 @@
  * @bug 8209058
  * @summary Verify the synthetic Profile+Annotation is ignored when using --release
  * @modules java.compiler
+ * @requires javac.sourceless & javac.releaseless
  * @compile -Xlint:all -Werror --release 10 NoProfileAnnotationWarning.java
  */
 

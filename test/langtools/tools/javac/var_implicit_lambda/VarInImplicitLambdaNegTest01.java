@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8198512 8199327
  * @summary compiler support for local-variable syntax for lambda parameters
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=VarInImplicitLambdaNegTest01.out -XDrawDiagnostics VarInImplicitLambdaNegTest01.java
  * @compile/fail/ref=VarInImplicitLambdaNegTest01_source10.out -source 10 -XDrawDiagnostics VarInImplicitLambdaNegTest01.java
  */

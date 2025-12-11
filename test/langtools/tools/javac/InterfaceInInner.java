@@ -4,6 +4,7 @@
  * @summary Interfaces can be declared in inner classes only for release >= 16
  * @author turnidge
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=InterfaceInInner.out -XDrawDiagnostics --release 15 InterfaceInInner.java
  * @compile InterfaceInInner.java
  */

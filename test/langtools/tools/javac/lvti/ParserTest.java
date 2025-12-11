@@ -1,6 +1,7 @@
 /*
  * @test /nodynamiccopyright/
  * @bug 8177466 8189146
+ * @requires javac.sourceless & javac.releaseless
  * @compile/ref=ParserTest9.out -XDrawDiagnostics --release 9 ParserTest.java
  * @summary Add compiler support for local variable type-inference
  * @compile/fail/ref=ParserTest.out -XDrawDiagnostics ParserTest.java

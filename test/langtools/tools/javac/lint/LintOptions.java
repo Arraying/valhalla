@@ -27,6 +27,7 @@
  * @test
  * @bug 8359596
  * @summary Verify behavior when both "-Xlint:options" and "-Xlint:-options" are given
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=LintOptions.out -Werror -XDrawDiagnostics -source 21 -target 21                                LintOptions.java
  * @compile/fail/ref=LintOptions.out -Werror -XDrawDiagnostics -source 21 -target 21 -Xlint:options                 LintOptions.java
  * @compile                          -Werror -XDrawDiagnostics -source 21 -target 21                -Xlint:-options LintOptions.java

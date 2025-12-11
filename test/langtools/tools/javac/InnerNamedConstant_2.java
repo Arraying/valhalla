@@ -4,6 +4,7 @@
  * @summary Verify rejection of illegal static variables in inner classes.
  * @author William Maddox (maddox)
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=InnerNamedConstant_2_A.out -XDrawDiagnostics --release 15 InnerNamedConstant_2.java
  * @compile/fail/ref=InnerNamedConstant_2_B.out -XDrawDiagnostics InnerNamedConstant_2.java
  */

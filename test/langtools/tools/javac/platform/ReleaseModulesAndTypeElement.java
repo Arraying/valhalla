@@ -27,6 +27,7 @@
  * @summary Verify that when reading from ct.sym, classes are only visible from modules from which
  *          they are exported.
  * @modules jdk.compiler
+ * @requires javac.sourceless & javac.releaseless
  * @build ReleaseModulesAndTypeElement
  * @compile -processor ReleaseModulesAndTypeElement --release 11 ReleaseModulesAndTypeElement.java
  */

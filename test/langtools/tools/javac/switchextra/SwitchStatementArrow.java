@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8206986
  * @summary Verify rule cases work properly.
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=SwitchStatementArrow-old.out --release 9 -XDrawDiagnostics SwitchStatementArrow.java
  * @compile SwitchStatementArrow.java
  * @run main SwitchStatementArrow

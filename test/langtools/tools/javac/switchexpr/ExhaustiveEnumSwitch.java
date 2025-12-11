@@ -25,6 +25,7 @@
  * @test
  * @bug 8206986 8243548
  * @summary Verify that an switch expression over enum can be exhaustive without default.
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 20 ExhaustiveEnumSwitch.java
  * @compile ExhaustiveEnumSwitchExtra.java
  * @run main ExhaustiveEnumSwitch IncompatibleClassChangeError

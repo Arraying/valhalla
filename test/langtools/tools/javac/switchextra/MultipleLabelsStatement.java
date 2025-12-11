@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8206986
  * @summary Verify cases with multiple labels work properly.
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=MultipleLabelsStatement-old.out --release 9 -XDrawDiagnostics MultipleLabelsStatement.java
  * @compile MultipleLabelsStatement.java
  * @run main MultipleLabelsStatement

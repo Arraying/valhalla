@@ -25,6 +25,7 @@
  * @test
  * @bug 8144168 8148432
  * @summary No type annotations generated for nested lambdas
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/lib
  * @modules jdk.compiler/com.sun.tools.javac.api
  *          jdk.compiler/com.sun.tools.javac.main

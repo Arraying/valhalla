@@ -1,6 +1,7 @@
 /*
  * @test /nodynamiccopyright/
  * @bug 8231827
+ * @requires javac.sourceless & javac.releaseless
  * @summary Match which involves a cast conversion
  * @compile/fail/ref=CastConversionMatch.out -XDrawDiagnostics CastConversionMatch.java
  * @compile --enable-preview --source ${jdk.version} CastConversionMatch.java */

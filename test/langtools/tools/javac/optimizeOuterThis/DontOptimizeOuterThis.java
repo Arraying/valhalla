@@ -29,6 +29,7 @@ import java.util.Optional;
  * @test
  * @bug 8271623
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile --release 17 DontOptimizeOuterThis.java InnerClasses.java
  * @run main DontOptimizeOuterThis
  */

@@ -25,6 +25,7 @@
  * @test
  * @bug 8306112 8309568
  * @summary Test basic processing of implicitly declared classes.
+ * @requires javac.sourceless & javac.releaseless
  * @library /tools/javac/lib
  * @modules java.compiler
  *          jdk.compiler

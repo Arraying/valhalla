@@ -2,6 +2,7 @@
  * @test /nodynamiccopyright/
  * @bug 8020586
  * @summary Warnings in the imports section should be attributed to the correct source file
+ * @requires javac.sourceless & javac.releaseless
  * @clean Auxiliary ImplicitCompilation
  * @compile/ref=ImplicitCompilation.out --release 8 -XDrawDiagnostics -Xlint:deprecation,-options -sourcepath . ImplicitCompilation.java
  * @clean Auxiliary ImplicitCompilation

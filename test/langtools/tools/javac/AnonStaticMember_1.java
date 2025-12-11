@@ -4,6 +4,7 @@
  * @summary Verify that an anonymous class can contain a static field only if source >= 16
  * @author maddox
  *
+ * @requires javac.sourceless & javac.releaseless
  * @compile/fail/ref=AnonStaticMember_1.out --release 15 -XDrawDiagnostics AnonStaticMember_1.java
  * @compile AnonStaticMember_1.java
  */
