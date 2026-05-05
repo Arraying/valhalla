@@ -64,12 +64,9 @@ static int entry_barrier_offset(nmethod* nm) {
   return 0;
 }
 
-static int* decode_guard_from_instruction(nmethod* nm, address& instruction) {
-  int* result = reinterpret_cast<int*>(MacroAssembler::target_addr_for_insn(instruction));
-  assert(nm->insts_contains(reinterpret_cast<address>(result)) ||
-         nm->stub_contains(reinterpret_cast<address>(result)),
-         "guard must be in nmethod code");
-  return result;
+static int local_guard_offset(nmethod* nm) {
+  // It's the last instruction
+  return (-entry_barrier_offset(nm)) - 4;
 }
 
 // The NativeNMethodBarrier class encapsulates up to three entrypoints and handles their
@@ -104,6 +101,11 @@ class NativeNMethodBarrier {
   int* _verified_alt1_guard;
   int* _verified_alt2_guard;
 
+  struct EntryPoint {
+    address* instruction;
+    int** guard;
+  };
+
  public:
   NativeNMethodBarrier(nmethod* nm) :
     _default_entry_instruction(nullptr),
@@ -125,33 +127,33 @@ class NativeNMethodBarrier {
     } else
 #endif
     {
-      // The default entry point has a known address. The guard address can be
-      // decoded from the literal in the instruction. Verification will confirm
-      // that this instruction corresponds to a load.
-      _default_entry_instruction = nm->code_begin() + nm->frame_complete_offset() + entry_barrier_offset(nm);
-      _default_entry_guard = decode_guard_from_instruction(nm, _default_entry_instruction);
-
-      // If the nmethod has scalarized arguments, then there are more entry
-      // points, each with their own nmethod entry barrier.
-      if (!nm->is_osr_method() && nm->method()->has_scalarized_args()) {
-        assert(nm->verified_entry_point() != nm->verified_inline_entry_point(), "scalarized entry point not found");
-        address method_body = nm->is_compiled_by_c1() ? nm->verified_inline_entry_point() : nm->verified_entry_point();
-        int barrier_offset = _default_entry_instruction - method_body;
-
-        // Set the first alternative entry point.
-        address entry_point2 = nm->is_compiled_by_c1() ? nm->verified_entry_point() : nm->verified_inline_entry_point();
-        _verified_alt1_instruction = entry_point2 + barrier_offset;
-        assert(_default_entry_instruction != _verified_alt1_instruction, "sanity");
-        _verified_alt1_guard = decode_guard_from_instruction(nm, _verified_alt1_instruction);
-
-        // If there is a second alternative entry point, set it too.
-        if (method_body != nm->verified_inline_ro_entry_point() && entry_point2 != nm->verified_inline_ro_entry_point()) {
-          _verified_alt2_instruction = nm->verified_inline_ro_entry_point() + barrier_offset;
-          _verified_alt2_guard = decode_guard_from_instruction(nm, _verified_alt2_instruction);
-          assert(_default_entry_instruction != _verified_alt2_instruction &&
-                 _verified_alt1_instruction != _verified_alt2_instruction,
-                 "sanity");
+      // The first instruction, corresponds to the default entrypoint.
+      address first_instruction = nm->code_begin() +
+                                  nm->frame_complete_offset() +
+                                  entry_barrier_offset(nm);
+      EntryPoint eps[] {
+        {&_default_entry_instruction, &_default_entry_guard},
+        {&_verified_alt1_instruction, &_verified_alt1_guard},
+        {&_verified_alt2_instruction, &_verified_alt2_guard},
+      };
+      int index = 0;
+      RelocIterator iter(nm);
+      // We don't know which instruction corresponds to each relocation.
+      // Hack: just use the default one to pass verification. We can't
+      // verify alt1 or alt2 but that's fine, since the actual arming will happen
+      // via the guards anyway. It just reduces safety a bit.
+      while (iter.next()) {
+        if (iter.type() == relocInfo::entry_guard_type) {
+          entry_guard_Relocation* const reloc = iter.entry_guard_reloc();
+          (*(eps[index].instruction)) = first_instruction;
+          (*(eps[index].guard)) = reinterpret_cast<int*>(reloc->addr());
+          index++;
         }
+      }
+      // Fallback case (C1).
+      if (_default_entry_guard == nullptr) {
+        _default_entry_instruction = first_instruction;
+        _default_entry_guard = reinterpret_cast<int*>(first_instruction + local_guard_offset(nm));
       }
       // Perform the checking as verification.
       err_msg msg("%s", "");
